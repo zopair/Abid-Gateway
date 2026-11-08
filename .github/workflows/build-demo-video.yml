@@ -37,5 +37,7 @@ jobs:
             echo "Demo video is already up to date."
           else
             git commit -m "Add Insta Freelancer demo video"
-            git push
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
           fi
