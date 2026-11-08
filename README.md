@@ -4,11 +4,19 @@ Arabic-first concept and simulation of an international USD freelancer collectio
 
 > **Simulation only.** No InstaPay/bank integration, real USD account or IBAN issuance, custody, FX conversion or payment execution. Do not enter real financial or personal data.
 
+## Live previews
+
+- **[Open the main prototype](https://zopair.github.io/Abid-Gateway/)**
+- **[Open the InstaPay-inspired USD screen](https://zopair.github.io/Abid-Gateway/instapay-demo.html)**
+
+The second page is a standalone responsive concept screen. Its balances, transaction history, wallet reference and exchange rate are fictional. It is not an official InstaPay interface and does not imply endorsement or partnership.
+
 ## Concept
 Explore a compliant gateway concept to receive international USD proceeds and settle to EGP through authorized financial partners. A real service requires licensed partners, regulatory and legal review, KYC/KYB, AML/CFT, consumer disclosures, security certification and written integration approval. No InstaPay affiliation or endorsement is claimed.
 
 ## Prototype
 - Responsive Arabic RTL dashboard in violet/orange.
+- Separate InstaPay-inspired concept screen for presentation.
 - Demo USD balance, fabricated transactions and indicative EGP calculation.
 - Lightweight Node HTTP API simulation bound to loopback; no persistence or external network calls.
 - Architecture, workflow, security, threat model, compliance boundary and provenance notes.
@@ -20,7 +28,7 @@ npm run dev
 npm run api # another terminal, localhost:8787
 npm test
 npm run build
-``
+```
 
 See [Architecture](docs/ARCHITECTURE.md), [Security](docs/SECURITY_POLICY.md), [Compliance](docs/COMPLIANCE.md), [IP declaration](docs/IP_DECLARATION.md), [timestamp log](evidence/TIMESTAMP_LOG.md).
 
