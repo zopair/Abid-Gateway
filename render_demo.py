@@ -1,4 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
+# Reproducible, dependency-light render source for the repository demo.
 from pathlib import Path
 import math
 
