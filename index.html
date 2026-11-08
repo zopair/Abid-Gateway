@@ -3,177 +3,189 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0f172a">
-  <meta name="description" content="عابِد — تصور واجهة لإضافة اختيارية تساعد المستقلين المصريين على تحويل مستحقات العمل الحر الدولية إلى حسابهم البنكي الأساسي.">
-  <title>عابِد | حساب العمل الحر</title>
+  <meta name="theme-color" content="#0b0f19">
+  <meta name="description" content="عابِد — تصور مقترح لواجهة خدمات مالية اختيارية للمستقلين.">
+  <title>عابِد | تصور حساب العمل الحر</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: { extend: { colors: { ink: '#0f172a', violet: '#5b21b6', accent: '#f97316' } } }
-    };
-  </script>
   <style>
-    :root{color-scheme:dark;font-family:Tahoma,"Noto Sans Arabic",Arial,sans-serif;background:#0f172a;color:#f8fafc}
+    :root{color-scheme:dark;font-family:Tahoma,"Noto Sans Arabic",Arial,sans-serif;background:#0b0f19;color:#f8fafc}
     *{box-sizing:border-box}
-    html{min-width:320px;min-height:100%;background:#0f172a;scroll-behavior:smooth}
-    body{margin:0;min-width:320px;min-height:100vh;background:radial-gradient(ellipse at 50% -15%,#4c1d95 0,#1e1b4b 27%,#0f172a 68%);padding-bottom:env(safe-area-inset-bottom)}
+    html{min-width:320px;min-height:100%;background:#0b0f19;scroll-behavior:smooth}
+    body{margin:0;min-width:320px;min-height:100vh;padding-bottom:calc(88px + env(safe-area-inset-bottom));background:linear-gradient(155deg,#0b0f19 0%,#11152b 45%,#1e1b4b 100%)}
     button{font:inherit;cursor:pointer}
     button:focus-visible{outline:3px solid #fdba74;outline-offset:3px}
-    .app-shell{width:100%;max-width:980px;margin:0 auto;padding:0 16px 34px}
-    .topbar{margin:0 -16px;padding:14px 18px;background:linear-gradient(105deg,#4c1d95,#6d28d9 55%,#7c3aed);border-bottom:1px solid #ffffff20;box-shadow:0 10px 35px #02061766}
-    .top-inner{max-width:944px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:11px;min-width:0}
-    .brand-mark{width:43px;height:43px;flex:0 0 43px;border-radius:14px;display:grid;place-items:center;background:#ffffff20;border:1px solid #ffffff45;font-size:25px;font-weight:900}
-    .brand-name{font-size:19px;font-weight:900;line-height:1.2}.brand-sub{font-size:10px;color:#e9d5ff;margin-top:4px}
-    .demo-pill{white-space:nowrap;border:1px solid #ffffff55;background:#ffffff15;border-radius:99px;padding:7px 10px;font-size:10px;color:#fff}
-    .welcome{padding:27px 2px 19px}
-    .welcome-kicker{color:#fdba74;font-size:12px;font-weight:800;margin:0 0 8px}
-    .welcome h1{font-size:clamp(22px,5vw,30px);line-height:1.4;margin:0;font-weight:900}
-    .welcome p{margin:7px 0 0;color:#cbd5e1;font-size:13px;line-height:1.8}
-    .profile-strip{display:flex;align-items:center;gap:10px;margin-top:17px}
-    .avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#c4b5fd,#7c3aed);color:#1e1b4b;font-weight:900}
-    .profile-name{font-size:13px;font-weight:800}.profile-caption{font-size:10px;color:#a5b4fc;margin-top:3px}
-    .account-grid{display:grid;grid-template-columns:1fr;gap:14px}
-    .account-card{position:relative;overflow:hidden;border:1px solid #ffffff20;border-radius:22px;padding:20px;background:linear-gradient(140deg,#312e81,#5b21b6 62%,#6d28d9);box-shadow:0 16px 38px #02061766}
-    .account-card:after{content:"";position:absolute;width:190px;height:190px;border:1px solid #ffffff16;border-radius:50%;left:-85px;top:-100px;box-shadow:0 0 0 24px #ffffff08,0 0 0 48px #ffffff05;pointer-events:none}
-    .account-card.primary{background:linear-gradient(140deg,#1e293b,#334155 65%,#475569)}
-    .card-head{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:10px;color:#e2e8f0;font-size:12px}
-    .card-tag{font-size:10px;border:1px solid #ffffff40;border-radius:8px;padding:6px 9px;color:#fff;white-space:nowrap}
-    .amount{position:relative;z-index:1;margin:18px 0 3px;font-size:clamp(30px,8vw,40px);font-weight:900;letter-spacing:-1px;line-height:1.25;text-align:left;direction:ltr;white-space:nowrap}
-    .amount-caption{position:relative;z-index:1;color:#cbd5e1;font-size:11px}
-    .card-foot{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:22px;padding-top:13px;border-top:1px solid #ffffff30;font-size:10px;color:#e2e8f0}
-    .iban{direction:ltr;unicode-bidi:embed;font-weight:700;letter-spacing:.5px}
-    .transfer-panel{margin-top:16px;padding:17px;border:1px solid #ffffff20;border-radius:20px;background:#172033cc;box-shadow:0 12px 30px #02061740}
-    .transfer-panel h2{margin:0;font-size:16px;font-weight:900}
-    .transfer-panel p{margin:6px 0 14px;color:#cbd5e1;font-size:11px;line-height:1.8}
-    .convert-button{width:100%;min-height:58px;border:0;border-radius:15px;padding:13px 16px;background:linear-gradient(100deg,#f97316,#fb923c);color:#fff;font-size:14px;font-weight:900;line-height:1.7;box-shadow:0 8px 22px #f9731633}
-    .convert-button:active{transform:translateY(1px);filter:brightness(.96)}
-    .rate-note{text-align:center;color:#94a3b8;font-size:10px;margin:10px 0 0;line-height:1.7}
-    .section{margin-top:25px}
-    .section-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
-    .section-heading h2{font-size:16px;font-weight:900;margin:0}
-    .section-heading span{font-size:10px;color:#94a3b8}
-    .services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-    .service{min-height:92px;border:1px solid #ffffff18;border-radius:16px;background:#1e293b99;padding:14px;display:flex;align-items:center;gap:11px}
-    .service-icon{width:38px;height:38px;flex:0 0 38px;border-radius:12px;display:grid;place-items:center;background:#7c3aed2b;color:#ddd6fe;font-size:19px}
-    .service strong{display:block;font-size:12px}.service small{display:block;margin-top:5px;color:#94a3b8;font-size:10px;line-height:1.5}
-    .transactions{overflow:hidden;border:1px solid #ffffff18;border-radius:17px;background:#1e293b99}
-    .transaction{display:flex;align-items:center;gap:11px;padding:14px;border-bottom:1px solid #ffffff12}
+    .topbar{background:linear-gradient(105deg,#6b21a8,#581c87);border-bottom:1px solid #ffffff20;box-shadow:0 8px 28px #02061766}
+    .top-inner{max-width:620px;margin:auto;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .user-area{display:flex;align-items:center;gap:10px;min-width:0}
+    .notify{width:36px;height:36px;border:1px solid #ffffff35;border-radius:12px;background:#ffffff18;color:white;display:grid;place-items:center;flex:0 0 auto}
+    .user-name{font-size:14px;font-weight:900;white-space:nowrap}
+    .user-caption{font-size:9px;color:#e9d5ff;margin-top:3px}
+    .brand-area{text-align:left;white-space:nowrap}
+    .brand-name{font-size:17px;font-weight:900;letter-spacing:.2px}
+    .brand-label{display:inline-block;margin-top:3px;padding:3px 7px;border:1px solid #ffffff55;border-radius:99px;color:#f3e8ff;font-size:9px}
+    .app{width:100%;max-width:620px;margin:0 auto;padding:18px 16px 22px}
+    .intro{margin:1px 0 16px}
+    .intro-kicker{color:#c4b5fd;font-size:11px;font-weight:700;margin:0 0 5px}
+    .intro h1{font-size:20px;font-weight:900;margin:0;line-height:1.5}
+    .intro p{font-size:11px;color:#aeb7cb;line-height:1.8;margin:4px 0 0}
+    .card{border-radius:20px;padding:17px;border:1px solid #334155;background:#1e293bcc;box-shadow:0 12px 28px #02061735}
+    .primary-card{margin-bottom:13px}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .card-title{font-size:13px;font-weight:900}
+    .card-subtitle{font-size:10px;color:#aab5ca;margin-top:5px}
+    .chip{padding:5px 9px;border-radius:8px;background:#f9731626;border:1px solid #fb923c70;color:#fdba74;font-size:10px;font-weight:800;white-space:nowrap}
+    .account-id{direction:ltr;unicode-bidi:embed;text-align:left;color:#cbd5e1;font-size:11px;font-weight:700;letter-spacing:.4px;margin-top:14px}
+    .usd-card{background:linear-gradient(110deg,#1e3a8a 0%,#172554 55%,#1e1b4b 100%);border:1px solid #3b82f666;box-shadow:0 14px 34px #02061766,0 0 20px #2563eb12}
+    .usd-heading{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+    .proposal{font-size:9px;color:#bfdbfe;border:1px solid #93c5fd55;background:#1d4ed833;border-radius:99px;padding:4px 8px}
+    .balance-label{font-size:10px;color:#bfdbfe;margin-top:17px}
+    .balance{direction:ltr;text-align:left;font-size:clamp(34px,9vw,43px);font-weight:1000;letter-spacing:-1.2px;line-height:1.3;margin:2px 0 9px;color:#fff}
+    .reference{direction:ltr;unicode-bidi:embed;text-align:left;color:#cbd5e1;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;line-height:1.8;overflow-wrap:anywhere}
+    .rate{margin-top:9px;color:#dbeafe;font-size:11px;font-weight:700}
+    .convert{width:100%;margin-top:17px;min-height:52px;border:0;border-radius:13px;background:#f97316;color:white;font-size:14px;font-weight:900;box-shadow:0 7px 18px #f9731635}
+    .convert:active{transform:translateY(1px);filter:brightness(.96)}
+    .section{margin-top:23px}
+    .section-title{font-size:13px;color:#cbd5e1;font-weight:800;margin:0 0 11px}
+    .services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+    .service{min-height:91px;border:1px solid #29364d;border-radius:15px;background:#172033d9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:11px 5px}
+    .service-icon{width:35px;height:35px;border-radius:11px;display:grid;place-items:center;background:#f9731624;color:#fb923c}
+    .service:nth-child(2) .service-icon{background:#7c3aed2b;color:#c4b5fd}
+    .service:nth-child(3) .service-icon{background:#0f766e35;color:#5eead4}
+    .service span:last-child{font-size:10px;font-weight:800;white-space:nowrap}
+    .transactions{border:1px solid #29364d;border-radius:16px;background:#172033d9;overflow:hidden}
+    .transaction{display:flex;align-items:center;gap:10px;padding:13px 12px;border-bottom:1px solid #ffffff12}
     .transaction:last-child{border-bottom:0}
-    .tx-icon{width:36px;height:36px;flex:0 0 36px;border-radius:12px;display:grid;place-items:center;background:#0f766e33;color:#5eead4;font-size:17px}
-    .tx-info{flex:1;min-width:0}.tx-info strong{display:block;font-size:12px}.tx-info small{display:block;margin-top:4px;color:#94a3b8;font-size:10px}
-    .tx-amount{direction:ltr;text-align:left;font-size:12px;font-weight:800;white-space:nowrap}.tx-amount.in{color:#86efac}
-    .status{display:block;margin-top:4px;color:#fbbf24;font-size:9px;text-align:left}
-    .legal{margin-top:27px;padding:17px;border:1px solid #f59e0b40;border-radius:16px;background:#78350f22;color:#cbd5e1;font-size:10px;line-height:1.9}
-    .legal strong{display:block;color:#fed7aa;font-size:12px;margin-bottom:6px}
-    .legal p{margin:0}
-    .footer-note{text-align:center;color:#64748b;font-size:9px;margin-top:17px;direction:ltr}
-    .modal{position:fixed;z-index:20;inset:0;display:grid;place-items:center;padding:18px;background:#020617c9;backdrop-filter:blur(5px)}
+    .tx-icon{width:34px;height:34px;flex:0 0 34px;border-radius:11px;background:#0f766e30;color:#5eead4;display:grid;place-items:center}
+    .tx-info{flex:1;min-width:0}
+    .tx-info strong{font-size:11px;display:block}
+    .tx-info small{font-size:9px;color:#8995aa;display:block;margin-top:4px}
+    .tx-value{direction:ltr;text-align:left;font-size:11px;font-weight:900;white-space:nowrap;color:#86efac}
+    .tx-value.neutral{color:#cbd5e1}
+    .tx-arrow{color:#64748b;font-size:13px;margin-right:3px}
+    .disclaimer{margin-top:22px;padding:13px 14px;border:1px solid #9a341266;border-radius:13px;background:#43140755;color:#cbd5e1;font-size:9px;line-height:1.9}
+    .disclaimer strong{display:block;color:#fdba74;font-size:10px;margin-bottom:4px}
+    .bottom-nav{position:fixed;z-index:10;bottom:0;left:0;right:0;padding:9px 16px calc(9px + env(safe-area-inset-bottom));background:#0b1020f2;border-top:1px solid #334155;backdrop-filter:blur(16px)}
+    .nav-inner{max-width:620px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .nav-item{border:0;background:transparent;color:#8390a8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:4px 2px;font-size:9px}
+    .nav-item svg{width:20px;height:20px}
+    .nav-item.active{color:#c4b5fd}
+    .nav-item.active svg{filter:drop-shadow(0 0 5px #a78bfa66)}
+    .modal{position:fixed;z-index:30;inset:0;display:grid;place-items:center;padding:18px;background:#020617c9;backdrop-filter:blur(5px)}
     .modal[hidden]{display:none}
-    .modal-card{position:relative;width:min(440px,100%);padding:25px 20px 19px;border:1px solid #ffffff24;border-radius:22px;background:#172033;color:#f8fafc;box-shadow:0 25px 70px #0009;text-align:center}
-    .close{position:absolute;top:10px;left:12px;width:34px;height:34px;border:0;border-radius:10px;background:#ffffff12;color:#fff;font-size:23px}
-    .modal-symbol{width:48px;height:48px;margin:0 auto 12px;display:grid;place-items:center;border-radius:15px;background:#7c3aed33;color:#ddd6fe;font-size:23px}
-    .modal-card h2{font-size:19px;margin:0}.modal-card p{font-size:12px;line-height:1.9;color:#cbd5e1}
-    .modal-flow{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:13px;border-radius:13px;background:#0f172a;color:#e2e8f0;font-size:10px;font-weight:800}
-    .modal-flow b{color:#fb923c;font-size:18px}
-    .modal-warning{display:block;margin-top:13px;color:#fbbf24;font-size:10px;line-height:1.8}
-    .modal-ok{width:100%;margin-top:17px;padding:12px;border:0;border-radius:12px;background:#7c3aed;color:#fff;font-weight:900}
-    @media(min-width:680px){.app-shell{padding-inline:24px}.topbar{margin-inline:-24px;padding-inline:24px}.account-grid{grid-template-columns:1fr 1fr}.welcome{padding-top:34px}.transfer-panel{padding:20px}.services{grid-template-columns:repeat(4,minmax(0,1fr))}}
-    @media(max-width:360px){.app-shell{padding-inline:12px}.topbar{margin-inline:-12px;padding-inline:12px}.brand-name{font-size:17px}.account-card{padding:16px}.amount{font-size:29px}.service{padding:11px;gap:8px}.service-icon{width:33px;height:33px;flex-basis:33px}}
+    .modal-card{position:relative;width:min(420px,100%);padding:23px 18px 18px;border:1px solid #475569;border-radius:20px;background:#172033;text-align:center;box-shadow:0 25px 70px #0009}
+    .close{position:absolute;top:8px;left:10px;width:32px;height:32px;border:0;border-radius:9px;background:#ffffff12;color:#fff;font-size:22px}
+    .modal-card h2{font-size:17px;margin:0}
+    .modal-card p{font-size:11px;line-height:1.9;color:#cbd5e1}
+    .modal-flow{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px;border-radius:12px;background:#0b1020;font-size:10px;font-weight:800}
+    .modal-flow b{color:#fb923c;font-size:17px}
+    .modal-warning{display:block;margin-top:11px;color:#fdba74;font-size:9px;line-height:1.8}
+    .modal-ok{width:100%;margin-top:15px;padding:11px;border:0;border-radius:11px;background:#6b21a8;color:#fff;font-weight:900}
+    @media(min-width:600px){.app{padding-top:23px}.card{padding:20px}.intro h1{font-size:22px}}
+    @media(max-width:350px){.app{padding-inline:12px}.top-inner{padding-inline:12px}.user-name{font-size:12px}.service span:last-child{font-size:9px}.card{padding:14px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="top-inner">
-      <div class="brand">
-        <div class="brand-mark" aria-hidden="true">ع</div>
-        <div><div class="brand-name">عابِد</div><div class="brand-sub">خدمات مالية مقترحة للمستقلين</div></div>
+      <div class="user-area">
+        <button class="notify" type="button" aria-label="الإشعارات">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg>
+        </button>
+        <div><div class="user-name">علي حسين فكري</div><div class="user-caption">مرحباً بك في عابِد</div></div>
       </div>
-      <span class="demo-pill">نموذج تجريبي · DEMO</span>
+      <div class="brand-area"><div class="brand-name">عابِد</div><span class="brand-label">Concept / نموذج تعليمي</span></div>
     </div>
   </header>
 
-  <main class="app-shell">
-    <section class="welcome">
-      <p class="welcome-kicker">مساحة العمل الحر الدولية</p>
-      <h1>كل حساباتك في نظرة واحدة</h1>
-      <p>تابع مستحقاتك الدولية، واعرض تصور تحويلها إلى حسابك البنكي الأساسي.</p>
-      <div class="profile-strip">
-        <div class="avatar" aria-hidden="true">ع</div>
-        <div><div class="profile-name">علي حسين فكري</div><div class="profile-caption">حساب مستخدم تجريبي</div></div>
-      </div>
+  <main class="app">
+    <section class="intro">
+      <p class="intro-kicker">حساباتك وخدماتك</p>
+      <h1>إدارة حساب العمل الحر</h1>
+      <p>واجهة مبسطة لمتابعة مستحقاتك الدولية والتسوية إلى حسابك الأساسي.</p>
     </section>
 
-    <section class="account-grid" aria-label="الحسابات">
-      <article class="account-card primary">
-        <div class="card-head"><span>الحساب الأساسي</span><span class="card-tag">EGP · تجريبي</span></div>
-        <div class="amount">48,250.00 <span style="font-size:16px;letter-spacing:0">ج.م</span></div>
-        <div class="amount-caption">رصيد توضيحي بالجنيه المصري · ليس رصيداً حقيقياً</div>
-        <div class="card-foot"><span>حسابك البنكي الأساسي</span><span>•••• 4821</span></div>
-      </article>
-
-      <article class="account-card">
-        <div class="card-head"><span>حساب العمل الحر الدولي</span><span class="card-tag">USD</span></div>
-        <div class="amount">$1,250.00</div>
-        <div class="amount-caption">رصيد افتراضي بالدولار الأمريكي</div>
-        <div class="card-foot"><span>Virtual IBAN · تجريبي</span><span class="iban">ABID •••• ••••</span></div>
+    <section aria-label="الحساب الأساسي">
+      <article class="card primary-card">
+        <div class="card-head">
+          <div><div class="card-title">الحساب الأساسي - مثال توضيحي</div><div class="card-subtitle">بنك شريك (افتراضي)</div></div>
+          <span class="chip">أساسي</span>
+        </div>
+        <div class="account-id">DEMO@ABID</div>
       </article>
     </section>
 
-    <section class="transfer-panel">
-      <h2>تحويل مستحقات العمل الحر</h2>
-      <p>إضافة اختيارية مقترحة تتيح للمستقل تحويل مستحقاته الدولية إلى حسابه الأساسي بالجنيه المصري.</p>
-      <button class="convert-button" id="convert" type="button">تحويل للجنيه المصري بسعر الصرف الرسمي <span aria-hidden="true">←</span></button>
-      <div class="rate-note">السعر الرسمي المعتمد وقت التنفيذ · لا يتم تنفيذ أي تحويل في هذا النموذج</div>
+    <section aria-label="حساب العمل الحر الدولي">
+      <article class="card usd-card">
+        <div class="usd-heading"><div class="card-title">حساب العمل الحر الدولي (USD)</div><span class="proposal">تصور مقترح</span></div>
+        <div class="balance-label">الرصيد المتاح — مثال افتراضي</div>
+        <div class="balance">$1,250.00</div>
+        <div class="reference">مرجع افتراضي: ABID-DEMO-USD-2049 (ليس IBAN حقيقي)</div>
+        <div class="rate">سعر الصرف الافتراضي: 1 USD = 49.20 EGP</div>
+        <button class="convert" id="convert" type="button">محاكاة التحويل للجنيه</button>
+      </article>
     </section>
 
     <section class="section" aria-labelledby="services-title">
-      <div class="section-heading"><h2 id="services-title">الخدمات السريعة</h2><span>عرض توضيحي</span></div>
+      <h2 class="section-title" id="services-title">الخدمات السريعة</h2>
       <div class="services">
-        <div class="service"><span class="service-icon" aria-hidden="true">⇄</span><div><strong>تحويل المستحقات</strong><small>من الدولار إلى الجنيه</small></div></div>
-        <div class="service"><span class="service-icon" aria-hidden="true">▤</span><div><strong>تفاصيل الحساب</strong><small>الحساب الأساسي والدولي</small></div></div>
-        <div class="service"><span class="service-icon" aria-hidden="true">◷</span><div><strong>سجل المعاملات</strong><small>متابعة العمليات السابقة</small></div></div>
-        <div class="service"><span class="service-icon" aria-hidden="true">ⓘ</span><div><strong>المساعدة</strong><small>معلومات عن الخدمة المقترحة</small></div></div>
+        <div class="service"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span><span>إرسال نقود</span></div>
+        <div class="service"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8h14M7 16h10"/></svg></span><span>طلب دفع</span></div>
+        <div class="service"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h2m4 0h2M8 15h2m4 0h2"/></svg></span><span>دفع فواتير</span></div>
       </div>
     </section>
 
     <section class="section" aria-labelledby="transactions-title">
-      <div class="section-heading"><h2 id="transactions-title">سجل المعاملات</h2><span>بيانات افتراضية</span></div>
+      <h2 class="section-title" id="transactions-title">سجل المعاملات — بيانات مسجلة</h2>
       <div class="transactions">
         <div class="transaction">
           <span class="tx-icon" aria-hidden="true">↓</span>
-          <div class="tx-info"><strong>مستحقات عمل حر دولية</strong><small>مثال توضيحي · 05 نوفمبر 2026</small></div>
-          <div><div class="tx-amount in">+$450.00</div><small class="status">سجل تجريبي</small></div>
+          <div class="tx-info"><strong>دفعة عمل حر دولية</strong><small>مثال توضيحي · 05 نوفمبر 2026</small></div>
+          <div class="tx-value">+$450.00</div><span class="tx-arrow" aria-hidden="true">‹</span>
+        </div>
+        <div class="transaction">
+          <span class="tx-icon" aria-hidden="true">⇄</span>
+          <div class="tx-info"><strong>تسوية بالجنيه المصري</strong><small>محاكاة تحويل · 28 أكتوبر 2026</small></div>
+          <div class="tx-value neutral">+22,140 EGP</div><span class="tx-arrow" aria-hidden="true">‹</span>
         </div>
         <div class="transaction">
           <span class="tx-icon" aria-hidden="true">↓</span>
-          <div class="tx-info"><strong>دفعة من عميل دولي</strong><small>مثال توضيحي · 28 أكتوبر 2026</small></div>
-          <div><div class="tx-amount in">+$300.00</div><small class="status">سجل تجريبي</small></div>
-        </div>
-        <div class="transaction">
-          <span class="tx-icon" aria-hidden="true">↓</span>
-          <div class="tx-info"><strong>مستحقات مشروع مستقل</strong><small>مثال توضيحي · 19 أكتوبر 2026</small></div>
-          <div><div class="tx-amount in">+$500.00</div><small class="status">سجل تجريبي</small></div>
+          <div class="tx-info"><strong>دفعة مشروع مستقل</strong><small>مثال توضيحي · 19 أكتوبر 2026</small></div>
+          <div class="tx-value">+$500.00</div><span class="tx-arrow" aria-hidden="true">‹</span>
         </div>
       </div>
     </section>
 
-    <aside class="legal">
-      <strong>تنويه مهم — تصور مقترح للعرض على البنك المركزي المصري</strong>
-      <p>هذه واجهة تصورية مستقلة وليست تطبيق InstaPay الرسمي أو خدمة مصرفية معتمدة. جميع الأرصدة وأرقام الحسابات وسجلات المعاملات وبيانات Virtual IBAN المعروضة افتراضية بالكامل. لا يوجد ربط بنكي أو تحويل أو إيداع فعلي. المقترح هو إضافة اختيارية لا تغيّر التطبيق الأصلي، وتخضع أي دراسة أو اعتماد أو تنفيذ مستقبلي لتقدير البنك المركزي المصري والجهات المصرفية المختصة.</p>
+    <aside class="disclaimer">
+      <strong>تنبيه مهم: تصور مقترح للعرض على البنك المركزي المصري.</strong>
+      هذه واجهة صورية مستقلة وليست التطبيق الرسمي InstaPay ولا تمثل شراكة أو اتصالاً من أي بنك أو جهة. جميع الأرصدة والمعاملات والمراجع وأسعار الصرف افتراضية بالكامل، ولا تمثل أرصدة أو عمليات مالية حقيقية.
     </aside>
-    <div class="footer-note">ABID GATEWAY · CONCEPT PROTOTYPE · NOT A LIVE BANKING SERVICE</div>
   </main>
+
+  <nav class="bottom-nav" aria-label="التنقل الرئيسي">
+    <div class="nav-inner">
+      <button class="nav-item active" type="button" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>
+        <span>الرئيسية</span>
+      </button>
+      <button class="nav-item" type="button" id="nav-transfer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h13l-3-3m3 3-3 3M17 17H4l3 3m-3-3 3-3"/></svg>
+        <span>التسوية/التحويلات</span>
+      </button>
+      <button class="nav-item" type="button" id="nav-settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.7a8 8 0 0 1-1.7 1l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.7-1l-1.7.7-1.4-2.4 1.4-1.1a7 7 0 0 1 0-2l-1.4-1.1 1.4-2.4 1.7.7a8 8 0 0 1 1.7-1l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.7 1l1.7-.7 1.4 2.4-1.4 1.1a7 7 0 0 1 0 2z"/></svg>
+        <span>الإعدادات</span>
+      </button>
+    </div>
+  </nav>
 
   <div class="modal" id="modal" hidden>
     <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <button class="close" id="close" type="button" aria-label="إغلاق">×</button>
-      <div class="modal-symbol" aria-hidden="true">⇄</div>
-      <h2 id="modal-title">معاينة فكرة التحويل</h2>
-      <p>في حال اعتماد المقترح مستقبلاً، يمكن للمستقل تحويل مستحقاته بالدولار إلى الجنيه المصري وإيداعها في حسابه الأساسي وفق سعر الصرف الرسمي المعتمد وقت التنفيذ.</p>
-      <div class="modal-flow"><span>رصيد افتراضي USD</span><b>←</b><span>الحساب الأساسي EGP</span></div>
-      <small class="modal-warning">هذه محاكاة للعرض فقط. لا يوجد تحويل أو إيداع حقيقي، ولا يتم الاتصال بأي بنك.</small>
+      <h2 id="modal-title">محاكاة التحويل للجنيه</h2>
+      <p>وفق المثال التوضيحي، يتم احتساب قيمة الرصيد بالدولار على سعر الصرف الافتراضي المعروض، ثم تظهر قيمة التسوية بالجنيه في الحساب الأساسي.</p>
+      <div class="modal-flow"><span>$1,250.00 USD</span><b>←</b><span>61,500.00 EGP</span></div>
+      <small class="modal-warning">قيمة حسابية افتراضية للعرض فقط، وليست سعر صرف أو عرض تحويل فعلي.</small>
       <button class="modal-ok" id="ok" type="button">حسناً</button>
     </section>
   </div>
@@ -181,24 +193,19 @@
   <script>
     (() => {
       const modal = document.getElementById('modal');
-      const closeButton = document.getElementById('close');
       const openButton = document.getElementById('convert');
-      const closeModal = () => {
-        modal.hidden = true;
-        openButton.focus();
-      };
-      openButton.addEventListener('click', () => {
-        modal.hidden = false;
-        closeButton.focus();
+      const closeButton = document.getElementById('close');
+      const closeModal = () => { modal.hidden = true; openButton.focus(); };
+      const showModal = () => { modal.hidden = false; closeButton.focus(); };
+      openButton.addEventListener('click', showModal);
+      document.getElementById('nav-transfer').addEventListener('click', showModal);
+      document.getElementById('nav-settings').addEventListener('click', () => {
+        document.querySelector('.disclaimer').scrollIntoView({behavior:'smooth',block:'center'});
       });
       closeButton.addEventListener('click', closeModal);
       document.getElementById('ok').addEventListener('click', closeModal);
-      modal.addEventListener('click', event => {
-        if (event.target === modal) closeModal();
-      });
-      document.addEventListener('keydown', event => {
-        if (event.key === 'Escape' && !modal.hidden) closeModal();
-      });
+      modal.addEventListener('click', event => { if(event.target === modal) closeModal(); });
+      document.addEventListener('keydown', event => { if(event.key === 'Escape' && !modal.hidden) closeModal(); });
     })();
   </script>
 </body>
