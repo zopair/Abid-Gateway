@@ -1,35 +1,28 @@
-# Abid Gateway | عابِد
+# عابِد | Abid Gateway
 
-Arabic-first concept and simulation of an international USD freelancer collection gateway for Egypt.
+**تصور مقترح مبسط للبنك المركزي المصري** لإضافة قسم اختياري يسهّل على المستقل المصري متابعة مستحقاته من العمل الحر الدولي وتحويلها إلى الجنيه المصري وإيداعها في حسابه البنكي الأساسي.
 
-> **Simulation only.** No InstaPay/bank integration, real USD account or IBAN issuance, custody, FX conversion or payment execution. Do not enter real financial or personal data.
+## الفكرة في شاشة واحدة
 
-## Live previews
+- يظهر للمستقل رصيد افتراضي بالدولار (Virtual USD).
+- يختار زرًا واحدًا: **تحويل للجنيه المصري وإيداعه في الحساب الأساسي بسعر الصرف الرسمي**.
+- يظل التطبيق المصرفي الأساسي وحساب العميل كما هما؛ الفكرة إضافة خدمة اختيارية لتسهيل وصول عائدات العمل الحر إلى القنوات المصرفية الرسمية.
 
-- **[Open the main prototype](https://zopair.github.io/Abid-Gateway/)**
-- **[Open the InstaPay-inspired USD screen](https://zopair.github.io/Abid-Gateway/instapay-demo.html)**
+## حدود هذا النموذج
 
-The second page is a standalone responsive concept screen. Its balances, transaction history, wallet reference and exchange rate are fictional. It is not an official InstaPay interface and does not imply endorsement or partnership.
+هذه نسخة Concept للشرح والعرض فقط. الرصيد افتراضي، والزر يعرض محاكاة ولا ينفذ تحويلًا أو إيداعًا حقيقيًا. لا يوجد حساب دولار أو IBAN حقيقي، ولا ربط قائم مع InstaPay أو أي بنك، ولا تمثل الواجهة تطبيق InstaPay الرسمي.
 
-## Concept
-Explore a compliant gateway concept to receive international USD proceeds and settle to EGP through authorized financial partners. A real service requires licensed partners, regulatory and legal review, KYC/KYB, AML/CFT, consumer disclosures, security certification and written integration approval. No InstaPay affiliation or endorsement is claimed.
+المقترح معروض على البنك المركزي المصري باعتباره الجهة المختصة؛ وتُترك له وللجهات المصرفية المعنية دراسة واعتماد الترتيبات التنظيمية والتقنية وآلية الربط والتنفيذ المناسبة.
 
-## Prototype
-- Responsive Arabic RTL dashboard in violet/orange.
-- Separate InstaPay-inspired concept screen for presentation.
-- Demo USD balance, fabricated transactions and indicative EGP calculation.
-- Lightweight Node HTTP API simulation bound to loopback; no persistence or external network calls.
-- Architecture, workflow, security, threat model, compliance boundary and provenance notes.
+## المعاينة
 
-## Run (Node 20+)
+- [فتح الواجهة التجريبية](https://zopair.github.io/Abid-Gateway/)
+
+## التشغيل محليًا
+
 ```sh
 npm install
 npm run dev
-npm run api # another terminal, localhost:8787
 npm test
 npm run build
 ```
-
-See [Architecture](docs/ARCHITECTURE.md), [Security](docs/SECURITY_POLICY.md), [Compliance](docs/COMPLIANCE.md), [IP declaration](docs/IP_DECLARATION.md), [timestamp log](evidence/TIMESTAMP_LOG.md).
-
-Git history and crypto receipts can support provenance; they do not alone establish sole inventorship or provide legal certainty. Code license: MIT; third-party trademark rights excluded.
