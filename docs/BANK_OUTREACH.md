@@ -121,3 +121,19 @@ I welcome confidential discussions with strategy, investment, innovation, digita
 - Mastercard — روابط مواقع البنوك المدرجة في دليل بطاقات مصر: https://www.mastercard.com/mea/en/personal/find-a-card/get-mastercard.html
 
 **تنبيه:** لا تنشر منشنًا جماعيًا قبل التحقق اليدوي من كل حساب رسمي. يمكن نشر المنشور مع ذكر أسماء البنوك المستهدفة نصيًا، ثم توجيه رسائل مباشرة مهنية إلى صفحاتها الرسمية وإداراتها المختصة.
+
+## 7. صفحات LinkedIn للبنوك التي أمكن التحقق من صفحاتها المؤسسية
+
+الروابط التالية تشير إلى صفحات مؤسسية تحمل اسم البنك ووصفه وموقعه الرسمي على LinkedIn. استخدم الرابط لفتح الصفحة ثم اختر منشن الجهة من داخل LinkedIn عند إعداد المنشور؛ لا تنسخ اسمًا مختصرًا أو handle يدويًا إذا لم يظهر لك خيار الإشارة:
+
+- National Bank of Egypt: https://www.linkedin.com/company/national-bank-of-egypt/
+- Banque Misr: https://www.linkedin.com/company/banque-misr/
+- CIB Egypt: https://www.linkedin.com/company/cibegypt/
+- Arab African International Bank: https://www.linkedin.com/company/aaibofficial/
+- Banque du Caire: https://www.linkedin.com/company/bdcegypt/
+- ALEXBANK: https://www.linkedin.com/company/bank-of-alexandria/
+- First Abu Dhabi Bank Misr (FABMISR): https://www.linkedin.com/company/fabmisr/
+- NBK Egypt: https://www.linkedin.com/company/nbkegypt/
+- Arab International Bank (AIB): https://www.linkedin.com/company/arab-international-bank/
+
+هذه مجموعة أولية وليست كل البنوك. لا نضيف روابط صفحات غير مؤكدة لمجرد استكمال العدد؛ يمكن استكمال التحقق لبقية الأسماء قبل النشر النهائي.
