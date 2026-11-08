@@ -1,4 +1,4 @@
-# التواصل مع البنوك المصرية — Insta Freelancer / Abid-Gateway
+# التواصل مع البنوك المصرية — NexaPay / NexaPay-Nexa-Next-Generation-Pay
 
 هذه الصفحة مرجع عملي للتواصل المؤسسي بشأن عرض الاستحواذ. وهي ليست إعلانًا عن اهتمام أو موافقة أي بنك، ولا تمثل قائمة حصرية بكل البنوك المرخصة في مصر.
 
@@ -73,9 +73,9 @@
 
 ## 4. مسودة منشور LinkedIn — العربية
 
-**فرصة استحواذ تقني للقطاع المصرفي المصري | Insta Freelancer**
+**فرصة استحواذ تقني للقطاع المصرفي المصري | NexaPay**
 
-أطرح مشروع **Insta Freelancer / Abid-Gateway** للنقاش مع البنوك والمؤسسات المصرفية المؤهلة في مصر، باعتباره أصلًا رقميًا مقترحًا يستهدف تسهيل تجربة المستقلين المصريين والعاملين عن بُعد في متابعة متحصلات أعمالهم العابرة للحدود عبر مسار مصرفي يتولى البنك تصميمه واعتماده وتشغيله.
+أطرح مشروع **NexaPay / NexaPay-Nexa-Next-Generation-Pay** للنقاش مع البنوك والمؤسسات المصرفية المؤهلة في مصر، باعتباره أصلًا رقميًا مقترحًا يستهدف تسهيل تجربة المستقلين المصريين والعاملين عن بُعد في متابعة متحصلات أعمالهم العابرة للحدود عبر مسار مصرفي يتولى البنك تصميمه واعتماده وتشغيله.
 
 **هيكل الاستحواذ المطلوب:**
 - إجمالي سعر البيع المطلوب: 250 مليون جنيه مصري.
@@ -86,8 +86,8 @@
 
 للتوضيح: النسخة الحالية نموذج واجهة تجريبي ببيانات افتراضية، وليست خدمة مصرفية عاملة، ولا تمثل شراكة أو اعتمادًا من البنك المركزي أو أي بنك. السعر المذكور هو طلب تفاوضي من المالك وليس تقييمًا مستقلًا معتمدًا. جميع الشروط تخضع للفحص النافي للجهالة والتفاوض والعقود النهائية.
 
-المعاينة: https://zopair.github.io/Abid-Gateway/  
-ملف الاستحواذ: https://github.com/zopair/Abid-Gateway/blob/main/docs/ACQUISITION_OFFER.md
+المعاينة: https://zopair.github.io/NexaPay-Nexa-Next-Generation-Pay/  
+ملف الاستحواذ: https://github.com/zopair/NexaPay-Nexa-Next-Generation-Pay/blob/main/docs/ACQUISITION_OFFER.md
 
 أرحب بتواصل إدارات الاستراتيجية والاستثمار والابتكار والتحول الرقمي والاستحواذات بالبنوك المهتمة.
 
@@ -95,9 +95,9 @@
 
 ## 5. LinkedIn post draft — English
 
-**Strategic Acquisition Opportunity for Egypt’s Banking Sector | Insta Freelancer**
+**Strategic Acquisition Opportunity for Egypt’s Banking Sector | NexaPay**
 
-I am opening discussions with qualified banks and financial institutions in Egypt regarding the full acquisition of **Insta Freelancer / Abid-Gateway** — a proposed digital product concept designed around the needs of Egyptian freelancers and remote professionals receiving cross-border income.
+I am opening discussions with qualified banks and financial institutions in Egypt regarding the full acquisition of **NexaPay / NexaPay-Nexa-Next-Generation-Pay** — a proposed digital product concept designed around the needs of Egyptian freelancers and remote professionals receiving cross-border income.
 
 **Proposed acquisition consideration: EGP 250 million**
 - EGP 50 million cash payment at closing.
@@ -107,8 +107,8 @@ The proposal is for a full transfer of the seller-owned and transferable assets 
 
 **Important disclosure:** The current release is a demonstration interface using fictional data. It is not a live financial service and is not affiliated with, approved by, or endorsed by the Central Bank of Egypt or any bank. The asking price is the owner’s negotiation position, not an independently certified valuation. Any transaction is subject to due diligence and definitive agreements.
 
-Demo: https://zopair.github.io/Abid-Gateway/  
-Acquisition brief: https://github.com/zopair/Abid-Gateway/blob/main/docs/ACQUISITION_OFFER.md
+Demo: https://zopair.github.io/NexaPay-Nexa-Next-Generation-Pay/  
+Acquisition brief: https://github.com/zopair/NexaPay-Nexa-Next-Generation-Pay/blob/main/docs/ACQUISITION_OFFER.md
 
 I welcome confidential discussions with strategy, investment, innovation, digital banking and M&A teams at interested institutions.
 
