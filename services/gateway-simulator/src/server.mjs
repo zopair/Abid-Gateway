@@ -1,0 +1,5 @@
+import { createServer } from "node:http";
+const HOST="127.0.0.1",PORT=Number(process.env.PORT??8787);
+const tx=Object.freeze([{id:"AB-DEMO-1042",currency:"USD",amount:420,state:"simulated_received"},{id:"AB-DEMO-1038",currency:"USD",amount:680,state:"simulated_settled"},{id:"AB-DEMO-1029",currency:"USD",amount:150,state:"simulated_received"}]);
+const send=(res,status,body)=>{res.writeHead(status,{"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"});res.end(JSON.stringify(body))};
+createServer((req,res)=>{if(req.method!=="GET")return send(res,405,{error:"method_not_allowed"});const p=new URL(req.url??"/",`http://${HOST}:${PORT}`).pathname;if(p==="/health")return send(res,200,{status:"ok",mode:"simulation_only"});if(p==="/api/demo/transactions")return send(res,200,{mode:"simulation_only",transactions:tx});if(p==="/api/demo/settlement")return send(res,200,{mode:"simulation_only",usd:1250,indicativeRate:49.8,egp:62250,note:"Not a quote or payment instruction."});return send(res,404,{error:"not_found"})}).listen(PORT,HOST,()=>console.log(`Abid simulator listening on http://${HOST}:${PORT}`));

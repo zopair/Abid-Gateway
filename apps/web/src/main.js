@@ -1,0 +1,16 @@
+import "./styles.css";
+const money=(n,c)=>new Intl.NumberFormat("ar-EG",{style:"currency",currency:c,maximumFractionDigits:c==="EGP"?0:2}).format(n);
+const rate=49.8, tx=[["دفعة تصميم واجهة","2026-11-04","AB-DEMO-1042",420,"تم الاستلام — محاكاة"],["مهمة تطوير برمجيات","2026-11-01","AB-DEMO-1038",680,"تمت التسوية — محاكاة"],["استشارة تقنية","2026-10-28","AB-DEMO-1029",150,"تم الاستلام — محاكاة"]];
+document.querySelector("#app").innerHTML=`
+<header><div class="brand"><i>ع</i><div><b>عابِد</b><small>Abid Gateway</small></div></div><div class="meta"><span class="chip">● وضع تجريبي</span><span class="avatar">م</span></div></header>
+<main><section class="welcome"><div><p class="eyebrow">بوابة العمل الحر الدولي</p><h1>أهلاً بك في حسابك<br><em>الدولي بالدولار USD</em></h1><p class="sub">تصوّر مبسط لاستقبال مستحقات العمل الحر وتسويتها عبر شركاء ماليين مرخصين.</p></div><div class="orb">$</div></section>
+<section class="account"><div class="account-head">حساب العمل الحر الدولي <span class="tag">محاكاة</span><b>◎</b></div><p>الرصيد التجريبي المتاح</p><h2>${money(1250,"USD")}</h2><div class="account-foot"><span>مرجع الحساب التجريبي</span><b>•••• •••• ABID-2048</b></div></section>
+<div class="actions"><button id="receive">↓　عرض بيانات الاستقبال</button><button id="settle">⇄　محاكاة التسوية</button></div>
+<section class="section"><div class="section-head"><div><p class="eyebrow">نظرة عامة</p><h2>ملخص الحساب</h2></div><small>بيانات تجريبية</small></div><div class="stats"><article><span>إجمالي المستلم</span><strong>${money(1250,"USD")}</strong><small>↑ 3 دفعات (مثال)</small></article><article><span>تسوية تقديرية بالجنيه</span><strong>${money(1250*rate,"EGP")}</strong><small>سعر افتراضي ${rate} EGP/USD</small></article></div></section>
+<section class="section"><div class="section-head"><div><p class="eyebrow">الحركة المالية</p><h2>آخر المعاملات</h2></div><small>3 سجلات</small></div><div class="transactions">${tx.map(t=>`<article><i>↙</i><div><b>${t[0]}</b><small>${t[1]} · ${t[2]}</small><small class="status">${t[4]}</small></div><strong>${money(t[3],"USD")}</strong></article>`).join("")}</div></section>
+<footer><p><b>تنويه:</b> واجهة محاكاة بحثية فقط. لا حساب USD أو IBAN حقيقي ولا تحويل أو تكامل InstaPay/بنك. لا تدخل بيانات مالية حقيقية.</p>Abid Gateway · Prototype 0.1.0</footer></main>
+<div id="dialog" hidden><section role="dialog" aria-modal="true"><button id="close" aria-label="إغلاق">×</button><p class="eyebrow">محاكاة آمنة</p><h2 id="title"></h2><p id="copy"></p><aside id="detail"></aside><button id="ok">فهمت</button></section></div>`;
+const d=document.querySelector("#dialog"),show=(t,c,x)=>{document.querySelector("#title").textContent=t;document.querySelector("#copy").textContent=c;document.querySelector("#detail").textContent=x;d.hidden=false},close=()=>d.hidden=true;
+document.querySelector("#receive").onclick=()=>show("بيانات استقبال افتراضية","بيانات الاستقبال الفعلية لا يصدرها إلا بنك أو مقدم مرخص بعد التحقق من العميل.","Demo Reference: ABID-USD-2048 · ليس IBAN أو حسابًا حقيقيًا");
+document.querySelector("#settle").onclick=()=>show("تسوية تقديرية","عملية حسابية توضيحية فقط وليست سعر صرف أو أمر تحويل.",`${money(1250,"USD")} × ${rate} = ${money(62250,"EGP")} · سعر افتراضي`);
+document.querySelector("#close").onclick=close;document.querySelector("#ok").onclick=close;d.onclick=e=>{if(e.target===d)close()};
