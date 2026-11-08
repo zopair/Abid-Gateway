@@ -38,3 +38,33 @@ https://zopair.github.io/Abid-Gateway/
 ## النشر والتشغيل
 
 يتم نشر ملف `index.html` الموجود في جذر المستودع مباشرة عبر GitHub Pages باستخدام سير العمل الموجود في `.github/workflows/pages.yml`. لا يتطلب المشروع تثبيت حزم أو تشغيل عملية بناء؛ يعتمد على HTML وCSS وJavaScript، مع تحميل Cairo وTailwind CSS عبر CDN.
+
+## الفيديو التوضيحي
+
+فيديو قصير يشرح واجهة **Insta Freelancer**، الحساب الأساسي بالجنيه، حساب العمل الحر الدولي بالدولار، والخطوة الحسابية لتحويل الرصيد الافتراضي إلى الجنيه:
+
+[مشاهدة فيديو Insta Freelancer Demo (MP4)](media/insta-freelancer-demo.mp4)
+
+- المدة: 18 ثانية.
+- الدقة: 640×360.
+- الصيغة: MP4 / H.264.
+- الفيديو صامت ومصمم للعرض السريع داخل GitHub.
+- جميع الأرصدة وأسعار الصرف المعروضة افتراضية، والتحويل محاكاة توضيحية فقط.
+
+### إعادة بناء الفيديو
+
+تم تجهيز مسار بناء مفتوح المصدر وقابل لإعادة الإنتاج:
+- `render_demo.py`: يرسم المشاهد العربية من الصفر باستخدام Pillow.
+- `build_video.sh`: يجمع المشاهد ويصدر MP4 باستخدام FFmpeg.
+- `.github/workflows/build-demo-video.yml`: يعيد توليد الفيديو تلقائيًا عند تحديث ملفات البناء، ثم يضيف الناتج إلى المستودع.
+
+المصادر المفتوحة:
+- [FFmpeg](https://github.com/FFmpeg/FFmpeg) — معالجة وترميز الفيديو (LGPL/GPL بحسب خيارات البناء).
+- [Pillow](https://github.com/python-pillow/Pillow) — رسم المشاهد والصور.
+- [GitHub Actions](https://github.com/actions/runner) — تشغيل مسار البناء.
+
+لإعادة البناء محليًا، ثبّت FFmpeg وPillow والخطوط العربية Noto Sans Arabic ثم نفّذ:
+```bash
+python render_demo.py
+bash build_video.sh
+```
