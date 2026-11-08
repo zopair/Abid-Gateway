@@ -1,88 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0b0f19">
-  <meta name="description" content="عابِد — تصور مقترح لواجهة خدمات مالية اختيارية للمستقلين.">
-  <title>عابِد | تصور حساب العمل الحر</title>
+  <meta name="theme-color" content="#17152f">
+  <meta name="description" content="عابِد — تصور واجهة حساب العمل الحر الدولي للمستقلين.">
+  <title>عابِد | حساب العمل الحر الدولي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root{color-scheme:dark;font-family:Tahoma,"Noto Sans Arabic",Arial,sans-serif;background:#0b0f19;color:#f8fafc}
     *{box-sizing:border-box}
-    html{min-width:320px;min-height:100%;background:#0b0f19;scroll-behavior:smooth}
-    body{margin:0;min-width:320px;min-height:100vh;padding-bottom:calc(88px + env(safe-area-inset-bottom));background:linear-gradient(155deg,#0b0f19 0%,#11152b 45%,#1e1b4b 100%)}
+    html{min-width:320px;min-height:100%;scroll-behavior:smooth}
+    body{margin:0;min-width:320px;min-height:100vh;padding-bottom:calc(82px + env(safe-area-inset-bottom));font-family:"Cairo",sans-serif;color:#fff;background:radial-gradient(circle at 85% 4%,#6b21a833,transparent 32%),linear-gradient(145deg,#0b0f19 0%,#17152f 52%,#1e1b4b 100%)}
     button{font:inherit;cursor:pointer}
     button:focus-visible{outline:3px solid #fdba74;outline-offset:3px}
-    .topbar{background:linear-gradient(105deg,#6b21a8,#581c87);border-bottom:1px solid #ffffff20;box-shadow:0 8px 28px #02061766}
-    .top-inner{max-width:620px;margin:auto;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .topbar{background:linear-gradient(120deg,#6b21a8,#581c87);box-shadow:0 8px 30px #0003}
+    .top-inner,.app-inner,.nav-inner{width:100%;max-width:620px;margin:auto}
+    .top-inner{padding:15px 17px;display:flex;align-items:center;justify-content:space-between;gap:12px}
     .user-area{display:flex;align-items:center;gap:10px;min-width:0}
-    .notify{width:36px;height:36px;border:1px solid #ffffff35;border-radius:12px;background:#ffffff18;color:white;display:grid;place-items:center;flex:0 0 auto}
+    .notify{width:38px;height:38px;border:1px solid #ffffff35;border-radius:12px;background:#ffffff18;color:white;display:grid;place-items:center;flex:none}
     .user-name{font-size:14px;font-weight:900;white-space:nowrap}
-    .user-caption{font-size:9px;color:#e9d5ff;margin-top:3px}
+    .user-caption{font-size:10px;color:#e9d5ff;margin-top:2px}
     .brand-area{text-align:left;white-space:nowrap}
-    .brand-name{font-size:17px;font-weight:900;letter-spacing:.2px}
-    .brand-label{display:inline-block;margin-top:3px;padding:3px 7px;border:1px solid #ffffff55;border-radius:99px;color:#f3e8ff;font-size:9px}
-    .app{width:100%;max-width:620px;margin:0 auto;padding:18px 16px 22px}
-    .intro{margin:1px 0 16px}
-    .intro-kicker{color:#c4b5fd;font-size:11px;font-weight:700;margin:0 0 5px}
-    .intro h1{font-size:20px;font-weight:900;margin:0;line-height:1.5}
-    .intro p{font-size:11px;color:#aeb7cb;line-height:1.8;margin:4px 0 0}
-    .card{border-radius:20px;padding:17px;border:1px solid #334155;background:#1e293bcc;box-shadow:0 12px 28px #02061735}
-    .primary-card{margin-bottom:13px}
-    .card-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .brand-name{font-size:19px;font-weight:900;line-height:1.2}
+    .brand-label{display:inline-block;margin-top:4px;padding:3px 8px;border:1px solid #ffffff55;border-radius:99px;color:#f3e8ff;font-size:9px}
+    .app-inner{padding:20px 16px 24px}
+    .intro{margin:0 0 16px}
+    .intro-kicker{margin:0 0 4px;color:#c4b5fd;font-size:11px;font-weight:800}
+    .intro h1{margin:0;font-size:21px;font-weight:900;line-height:1.5}
+    .intro p{margin:4px 0 0;color:#aeb7cb;font-size:11px;line-height:1.9}
+    .card{border-radius:20px;padding:17px;border:1px solid #ffffff1c;box-shadow:0 12px 30px #02061740}
+    .primary-card{margin-bottom:13px;background:linear-gradient(145deg,#fff,#f3f4f8);color:#263248}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
     .card-title{font-size:13px;font-weight:900}
-    .card-subtitle{font-size:10px;color:#aab5ca;margin-top:5px}
-    .chip{padding:5px 9px;border-radius:8px;background:#f9731626;border:1px solid #fb923c70;color:#fdba74;font-size:10px;font-weight:800;white-space:nowrap}
-    .account-id{direction:ltr;unicode-bidi:embed;text-align:left;color:#cbd5e1;font-size:11px;font-weight:700;letter-spacing:.4px;margin-top:14px}
-    .usd-card{background:linear-gradient(110deg,#1e3a8a 0%,#172554 55%,#1e1b4b 100%);border:1px solid #3b82f666;box-shadow:0 14px 34px #02061766,0 0 20px #2563eb12}
-    .usd-heading{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
-    .proposal{font-size:9px;color:#bfdbfe;border:1px solid #93c5fd55;background:#1d4ed833;border-radius:99px;padding:4px 8px}
-    .balance-label{font-size:10px;color:#bfdbfe;margin-top:17px}
-    .balance{direction:ltr;text-align:left;font-size:clamp(34px,9vw,43px);font-weight:1000;letter-spacing:-1.2px;line-height:1.3;margin:2px 0 9px;color:#fff}
-    .reference{direction:ltr;unicode-bidi:embed;text-align:left;color:#cbd5e1;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;line-height:1.8;overflow-wrap:anywhere}
+    .card-subtitle{margin-top:4px;color:#64748b;font-size:10px}
+    .chip{padding:5px 10px;border-radius:8px;background:#ede9fe;color:#6b21a8;font-size:10px;font-weight:900;white-space:nowrap}
+    .account-id{margin-top:14px;direction:ltr;unicode-bidi:isolate;text-align:left;color:#475569;font-size:12px;font-weight:800;letter-spacing:.5px}
+    .usd-card{background:radial-gradient(circle at 90% 8%,#3b82f633,transparent 35%),linear-gradient(135deg,#173d6b,#102d52 58%,#0c1e38);border:1px solid #93c5fd35}
+    .usd-heading{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .proposal{padding:4px 8px;border:1px solid #93c5fd55;border-radius:99px;color:#bfdbfe;font-size:9px}
+    .balance-label{margin-top:18px;color:#bfdbfe;font-size:10px}
+    .balance{margin:2px 0 7px;direction:ltr;unicode-bidi:isolate;text-align:left;font-size:clamp(34px,9vw,43px);font-weight:900;letter-spacing:-1px;line-height:1.35}
+    .reference{direction:ltr;unicode-bidi:isolate;text-align:left;color:#cbd5e1;font:10px/1.8 ui-monospace,monospace;overflow-wrap:anywhere}
     .rate{margin-top:9px;color:#dbeafe;font-size:11px;font-weight:700}
-    .convert{width:100%;margin-top:17px;min-height:52px;border:0;border-radius:13px;background:#f97316;color:white;font-size:14px;font-weight:900;box-shadow:0 7px 18px #f9731635}
-    .convert:active{transform:translateY(1px);filter:brightness(.96)}
-    .section{margin-top:23px}
-    .section-title{font-size:13px;color:#cbd5e1;font-weight:800;margin:0 0 11px}
+    .convert{width:100%;min-height:52px;margin-top:17px;border:0;border-radius:13px;background:linear-gradient(90deg,#2563eb,#3b82f6);color:white;font-size:14px;font-weight:900;transition:filter .2s,transform .2s}
+    .convert:hover{filter:brightness(1.1);transform:translateY(-1px)}
+    .section{margin-top:24px}
+    .section-title{margin:0 0 11px;color:#e2e8f0;font-size:14px;font-weight:900}
     .services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
-    .service{min-height:91px;border:1px solid #29364d;border-radius:15px;background:#172033d9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:11px 5px}
-    .service-icon{width:35px;height:35px;border-radius:11px;display:grid;place-items:center;background:#f9731624;color:#fb923c}
-    .service:nth-child(2) .service-icon{background:#7c3aed2b;color:#c4b5fd}
+    .service{min-height:94px;padding:11px 5px;border:1px solid #ffffff18;border-radius:15px;background:#172033d9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;color:#fff;transition:background .2s}
+    .service:hover{background:#26344d}
+    .service-icon{width:37px;height:37px;border-radius:12px;background:#f9731628;color:#fdba74;display:grid;place-items:center}
+    .service:nth-child(2) .service-icon{background:#7c3aed35;color:#c4b5fd}
     .service:nth-child(3) .service-icon{background:#0f766e35;color:#5eead4}
     .service span:last-child{font-size:10px;font-weight:800;white-space:nowrap}
-    .transactions{border:1px solid #29364d;border-radius:16px;background:#172033d9;overflow:hidden}
+    .transactions{overflow:hidden;border:1px solid #ffffff18;border-radius:16px;background:#172033d9}
     .transaction{display:flex;align-items:center;gap:10px;padding:13px 12px;border-bottom:1px solid #ffffff12}
     .transaction:last-child{border-bottom:0}
-    .tx-icon{width:34px;height:34px;flex:0 0 34px;border-radius:11px;background:#0f766e30;color:#5eead4;display:grid;place-items:center}
+    .tx-icon{width:35px;height:35px;flex:none;border-radius:11px;background:#0f766e35;color:#5eead4;display:grid;place-items:center;font-size:17px}
     .tx-info{flex:1;min-width:0}
-    .tx-info strong{font-size:11px;display:block}
-    .tx-info small{font-size:9px;color:#8995aa;display:block;margin-top:4px}
-    .tx-value{direction:ltr;text-align:left;font-size:11px;font-weight:900;white-space:nowrap;color:#86efac}
+    .tx-info strong{display:block;font-size:11px}
+    .tx-info small{display:block;margin-top:4px;color:#94a3b8;font-size:9px}
+    .tx-value{direction:ltr;unicode-bidi:isolate;text-align:left;color:#86efac;font-size:11px;font-weight:900;white-space:nowrap}
     .tx-value.neutral{color:#cbd5e1}
-    .tx-arrow{color:#64748b;font-size:13px;margin-right:3px}
-    .disclaimer{margin-top:22px;padding:13px 14px;border:1px solid #9a341266;border-radius:13px;background:#43140755;color:#cbd5e1;font-size:9px;line-height:1.9}
-    .disclaimer strong{display:block;color:#fdba74;font-size:10px;margin-bottom:4px}
-    .bottom-nav{position:fixed;z-index:10;bottom:0;left:0;right:0;padding:9px 16px calc(9px + env(safe-area-inset-bottom));background:#0b1020f2;border-top:1px solid #334155;backdrop-filter:blur(16px)}
-    .nav-inner{max-width:620px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-    .nav-item{border:0;background:transparent;color:#8390a8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:4px 2px;font-size:9px}
-    .nav-item svg{width:20px;height:20px}
+    .disclaimer{margin-top:23px;padding:14px;border:1px solid #f59e0b44;border-radius:14px;background:#78350f22;color:#dbe3ef;font-size:10px;line-height:1.9}
+    .disclaimer strong{display:block;margin-bottom:5px;color:#fed7aa;font-size:11px}
+    .bottom-nav{position:fixed;z-index:20;right:0;bottom:0;left:0;padding:9px 16px calc(9px + env(safe-area-inset-bottom));border-top:1px solid #ffffff18;background:#11152bf2;backdrop-filter:blur(16px)}
+    .nav-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .nav-item{border:0;background:transparent;color:#9ca3af;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:3px;font-size:9px}
+    .nav-item svg{width:21px;height:21px}
     .nav-item.active{color:#c4b5fd}
-    .nav-item.active svg{filter:drop-shadow(0 0 5px #a78bfa66)}
-    .modal{position:fixed;z-index:30;inset:0;display:grid;place-items:center;padding:18px;background:#020617c9;backdrop-filter:blur(5px)}
-    .modal[hidden]{display:none}
-    .modal-card{position:relative;width:min(420px,100%);padding:23px 18px 18px;border:1px solid #475569;border-radius:20px;background:#172033;text-align:center;box-shadow:0 25px 70px #0009}
-    .close{position:absolute;top:8px;left:10px;width:32px;height:32px;border:0;border-radius:9px;background:#ffffff12;color:#fff;font-size:22px}
-    .modal-card h2{font-size:17px;margin:0}
-    .modal-card p{font-size:11px;line-height:1.9;color:#cbd5e1}
-    .modal-flow{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px;border-radius:12px;background:#0b1020;font-size:10px;font-weight:800}
-    .modal-flow b{color:#fb923c;font-size:17px}
-    .modal-warning{display:block;margin-top:11px;color:#fdba74;font-size:9px;line-height:1.8}
-    .modal-ok{width:100%;margin-top:15px;padding:11px;border:0;border-radius:11px;background:#6b21a8;color:#fff;font-weight:900}
-    @media(min-width:600px){.app{padding-top:23px}.card{padding:20px}.intro h1{font-size:22px}}
-    @media(max-width:350px){.app{padding-inline:12px}.top-inner{padding-inline:12px}.user-name{font-size:12px}.service span:last-child{font-size:9px}.card{padding:14px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+    .toast{position:fixed;z-index:40;top:18px;left:50%;width:min(90%,390px);transform:translate(-50%,-140%);padding:14px 16px;border:1px solid #86efac55;border-radius:14px;background:#14532d;color:#f0fdf4;box-shadow:0 12px 35px #0005;text-align:center;font-size:12px;font-weight:800;line-height:1.8;transition:transform .25s ease}
+    .toast.show{transform:translate(-50%,0)}
+    @media(min-width:600px){.app-inner{padding-top:25px}.card{padding:20px}.intro h1{font-size:23px}}
+    @media(max-width:350px){.top-inner{padding-inline:12px}.app-inner{padding-inline:12px}.user-name{font-size:12px}.brand-name{font-size:17px}.service span:last-child{font-size:9px}.card{padding:14px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
   </style>
 </head>
 <body>
@@ -90,22 +84,22 @@
     <div class="top-inner">
       <div class="user-area">
         <button class="notify" type="button" aria-label="الإشعارات">
-          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg>
         </button>
-        <div><div class="user-name">علي حسين فكري</div><div class="user-caption">مرحباً بك في عابِد</div></div>
+        <div><div class="user-name">علي حسين فكري</div><div class="user-caption">معرف الحساب: DEMO@ABID</div></div>
       </div>
-      <div class="brand-area"><div class="brand-name">عابِد</div><span class="brand-label">Concept / نموذج تعليمي</span></div>
+      <div class="brand-area"><div class="brand-name">عابِد</div><span class="brand-label">Concept / نموذج تصوري</span></div>
     </div>
   </header>
 
-  <main class="app">
+  <main class="app-inner">
     <section class="intro">
-      <p class="intro-kicker">حساباتك وخدماتك</p>
-      <h1>إدارة حساب العمل الحر</h1>
-      <p>واجهة مبسطة لمتابعة مستحقاتك الدولية والتسوية إلى حسابك الأساسي.</p>
+      <p class="intro-kicker">مساحة العمل الحر الدولية</p>
+      <h1>حساباتك وخدماتك في مكان واحد</h1>
+      <p>تابع مستحقاتك الدولية واعرض تصور تحويلها إلى حسابك الأساسي.</p>
     </section>
 
-    <section aria-label="الحساب الأساسي">
+    <section aria-label="الحسابات">
       <article class="card primary-card">
         <div class="card-head">
           <div><div class="card-title">الحساب الأساسي - مثال توضيحي</div><div class="card-subtitle">بنك شريك (افتراضي)</div></div>
@@ -113,99 +107,111 @@
         </div>
         <div class="account-id">DEMO@ABID</div>
       </article>
-    </section>
 
-    <section aria-label="حساب العمل الحر الدولي">
       <article class="card usd-card">
-        <div class="usd-heading"><div class="card-title">حساب العمل الحر الدولي (USD)</div><span class="proposal">تصور مقترح</span></div>
-        <div class="balance-label">الرصيد المتاح — مثال افتراضي</div>
+        <div class="usd-heading"><div class="card-title">حساب العمل الحر الدولي (USD)</div><span class="proposal">حساب افتراضي</span></div>
+        <div class="balance-label">الرصيد المتاح</div>
         <div class="balance">$1,250.00</div>
-        <div class="reference">مرجع افتراضي: ABID-DEMO-USD-2049 (ليس IBAN حقيقي)</div>
+        <div class="reference">Virtual IBAN: ABID-DEMO-USD-2049</div>
         <div class="rate">سعر الصرف الافتراضي: 1 USD = 49.20 EGP</div>
-        <button class="convert" id="convert" type="button">محاكاة التحويل للجنيه</button>
+        <button class="convert" id="transferButton" type="button">تحويل للجنيه</button>
       </article>
     </section>
 
     <section class="section" aria-labelledby="services-title">
       <h2 class="section-title" id="services-title">الخدمات السريعة</h2>
       <div class="services">
-        <div class="service"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span><span>إرسال نقود</span></div>
-        <div class="service"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8h14M7 16h10"/></svg></span><span>طلب دفع</span></div>
-        <div class="service"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h2m4 0h2M8 15h2m4 0h2"/></svg></span><span>دفع فواتير</span></div>
+        <button class="service" type="button" data-service="إرسال نقود">
+          <span class="service-icon"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></span><span>إرسال نقود</span>
+        </button>
+        <button class="service" type="button" data-service="طلب دفع">
+          <span class="service-icon"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18m-7-7h14M7 7h10"/></svg></span><span>طلب دفع</span>
+        </button>
+        <button class="service" type="button" data-service="دفع فواتير">
+          <span class="service-icon"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h3m2 0h3M8 16h3"/></svg></span><span>دفع فواتير</span>
+        </button>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="transactions-title">
-      <h2 class="section-title" id="transactions-title">سجل المعاملات — بيانات مسجلة</h2>
+    <section class="section" aria-labelledby="history-title">
+      <h2 class="section-title" id="history-title">سجل المعاملات</h2>
       <div class="transactions">
         <div class="transaction">
           <span class="tx-icon" aria-hidden="true">↓</span>
-          <div class="tx-info"><strong>دفعة عمل حر دولية</strong><small>مثال توضيحي · 05 نوفمبر 2026</small></div>
-          <div class="tx-value">+$450.00</div><span class="tx-arrow" aria-hidden="true">‹</span>
+          <div class="tx-info"><strong>استلام عائد عمل حر</strong><small>08 نوفمبر 2026 · 11:30 ص</small></div>
+          <div class="tx-value">+$500.00 USD</div>
         </div>
         <div class="transaction">
           <span class="tx-icon" aria-hidden="true">⇄</span>
-          <div class="tx-info"><strong>تسوية بالجنيه المصري</strong><small>محاكاة تحويل · 28 أكتوبر 2026</small></div>
-          <div class="tx-value neutral">+22,140 EGP</div><span class="tx-arrow" aria-hidden="true">‹</span>
+          <div class="tx-info"><strong>محاكاة تحويل إلى الحساب الأساسي</strong><small>06 نوفمبر 2026 · 02:15 م</small></div>
+          <div class="tx-value neutral">+24,600 EGP</div>
         </div>
         <div class="transaction">
           <span class="tx-icon" aria-hidden="true">↓</span>
-          <div class="tx-info"><strong>دفعة مشروع مستقل</strong><small>مثال توضيحي · 19 أكتوبر 2026</small></div>
-          <div class="tx-value">+$500.00</div><span class="tx-arrow" aria-hidden="true">‹</span>
+          <div class="tx-info"><strong>دفعة مشروع مستقل</strong><small>04 نوفمبر 2026 · 09:45 ص</small></div>
+          <div class="tx-value">+$250.00 USD</div>
         </div>
       </div>
     </section>
 
-    <aside class="disclaimer">
-      <strong>تنبيه مهم: تصور مقترح للعرض على البنك المركزي المصري.</strong>
-      هذه واجهة صورية مستقلة وليست التطبيق الرسمي InstaPay ولا تمثل شراكة أو اتصالاً من أي بنك أو جهة. جميع الأرصدة والمعاملات والمراجع وأسعار الصرف افتراضية بالكامل، ولا تمثل أرصدة أو عمليات مالية حقيقية.
-    </aside>
+    <footer class="disclaimer">
+      <strong>تنويه توضيحي — تصور مقترح للعرض على البنك المركزي المصري</strong>
+      هذه واجهة تصورية مستقلة وليست تطبيق InstaPay الرسمي، ولا تمثل شراكة أو اتصالاً فعلياً من أي بنك أو جهة. جميع الأرصدة وأرقام الحسابات وسجلات المعاملات وبيانات Virtual IBAN وأسعار الصرف افتراضية بالكامل. لا يوجد تحويل أو إيداع فعلي من خلال هذا النموذج.
+    </footer>
   </main>
 
-  <nav class="bottom-nav" aria-label="التنقل الرئيسي">
+  <nav class="bottom-nav" aria-label="شريط التنقل السفلي">
     <div class="nav-inner">
       <button class="nav-item active" type="button" aria-current="page">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>
-        <span>الرئيسية</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg><span>الرئيسية</span>
       </button>
-      <button class="nav-item" type="button" id="nav-transfer">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h13l-3-3m3 3-3 3M17 17H4l3 3m-3-3 3-3"/></svg>
-        <span>التسوية/التحويلات</span>
+      <button class="nav-item" type="button" id="nav-transfers">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h13l-3-3m3 3-3 3M17 17H4l3 3m-3-3 3-3"/></svg><span>التسوية/التحويلات</span>
       </button>
       <button class="nav-item" type="button" id="nav-settings">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.7a8 8 0 0 1-1.7 1l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.7-1l-1.7.7-1.4-2.4 1.4-1.1a7 7 0 0 1 0-2l-1.4-1.1 1.4-2.4 1.7.7a8 8 0 0 1 1.7-1l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.7 1l1.7-.7 1.4 2.4-1.4 1.1a7 7 0 0 1 0 2z"/></svg>
-        <span>الإعدادات</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.8 1.8 0 0 0 .4 2l-1.8 1.8a1.8 1.8 0 0 0-2-.4 1.8 1.8 0 0 0-1.1 1.6v.3h-2.6V20a1.8 1.8 0 0 0-1.1-1.6 1.8 1.8 0 0 0-2 .4l-.2.2-1.8-1.8.2-.2a1.8 1.8 0 0 0 .4-2A1.8 1.8 0 0 0 6.2 14H6v-2.6h.2a1.8 1.8 0 0 0 1.6-1.1 1.8 1.8 0 0 0-.4-2l-.2-.2L9 6.3l.2.2a1.8 1.8 0 0 0 2 .4A1.8 1.8 0 0 0 12.3 5v-.2h2.6V5a1.8 1.8 0 0 0 1.1 1.6 1.8 1.8 0 0 0 2-.4l.2-.2L20 7.8l-.2.2a1.8 1.8 0 0 0-.4 2 1.8 1.8 0 0 0 1.6 1.1h.3v2.6H21a1.8 1.8 0 0 0-1.6 1.3z"/></svg><span>الإعدادات</span>
       </button>
     </div>
   </nav>
 
-  <div class="modal" id="modal" hidden>
-    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button class="close" id="close" type="button" aria-label="إغلاق">×</button>
-      <h2 id="modal-title">محاكاة التحويل للجنيه</h2>
-      <p>وفق المثال التوضيحي، يتم احتساب قيمة الرصيد بالدولار على سعر الصرف الافتراضي المعروض، ثم تظهر قيمة التسوية بالجنيه في الحساب الأساسي.</p>
-      <div class="modal-flow"><span>$1,250.00 USD</span><b>←</b><span>61,500.00 EGP</span></div>
-      <small class="modal-warning">قيمة حسابية افتراضية للعرض فقط، وليست سعر صرف أو عرض تحويل فعلي.</small>
-      <button class="modal-ok" id="ok" type="button">حسناً</button>
-    </section>
-  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
     (() => {
-      const modal = document.getElementById('modal');
-      const openButton = document.getElementById('convert');
-      const closeButton = document.getElementById('close');
-      const closeModal = () => { modal.hidden = true; openButton.focus(); };
-      const showModal = () => { modal.hidden = false; closeButton.focus(); };
-      openButton.addEventListener('click', showModal);
-      document.getElementById('nav-transfer').addEventListener('click', showModal);
-      document.getElementById('nav-settings').addEventListener('click', () => {
-        document.querySelector('.disclaimer').scrollIntoView({behavior:'smooth',block:'center'});
+      const toast = document.getElementById('toast');
+      let toastTimer;
+
+      function showMessage(message) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove('show'), 3600);
+      }
+
+      function simulateTransfer() {
+        const usd = 1250;
+        const rate = 49.20;
+        const egp = (usd * rate).toLocaleString('en-US', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+        showMessage('تمت محاكاة التحويل بنجاح — $' + usd.toFixed(2) +
+          ' × ' + rate.toFixed(2) + ' = ' + egp +
+          ' جنيه مصري. هذه نتيجة توضيحية وليست عملية مالية فعلية.');
+      }
+
+      document.getElementById('transferButton').addEventListener('click', simulateTransfer);
+
+      document.querySelectorAll('[data-service]').forEach(button => {
+        button.addEventListener('click', () => {
+          showMessage(button.dataset.service + ' — هذه الخاصية ضمن النموذج التصوري.');
+        });
       });
-      closeButton.addEventListener('click', closeModal);
-      document.getElementById('ok').addEventListener('click', closeModal);
-      modal.addEventListener('click', event => { if(event.target === modal) closeModal(); });
-      document.addEventListener('keydown', event => { if(event.key === 'Escape' && !modal.hidden) closeModal(); });
+
+      document.getElementById('nav-transfers').addEventListener('click', simulateTransfer);
+      document.getElementById('nav-settings').addEventListener('click', () => {
+        document.querySelector('.disclaimer').scrollIntoView({behavior:'smooth', block:'center'});
+      });
     })();
   </script>
 </body>
