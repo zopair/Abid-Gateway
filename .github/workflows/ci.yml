@@ -1,19 +1,53 @@
-name: CI
+name: NexaPay Static Site CI
+
 on:
   push:
-    branches: [main]
+    branches: [main, fix/least-privilege-demo-build]
   pull_request:
     branches: [main]
+
 permissions:
   contents: read
+
+concurrency:
+  group: nexapay-static-ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test-build:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-python@v5
         with:
-          node-version: 20
-      - run: npm install
-      - run: npm test
-      - run: npm run build
+          python-version: "3.12"
+      - name: Compile demo generator
+        run: python -m py_compile render_demo.py
+      - name: Run static site regression tests
+        run: python -m unittest discover -s tests -p "test_static_site.py" -v
+      - name: Validate HTML document contract
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+
+          class DocumentCheck(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.html = None
+                  self.title_seen = False
+              def handle_starttag(self, tag, attrs):
+                  if tag == "html":
+                      self.html = dict(attrs)
+                  if tag == "title":
+                      self.title_seen = True
+
+          parser = DocumentCheck()
+          parser.feed(Path("index.html").read_text(encoding="utf-8"))
+          parser.close()
+          assert parser.html and parser.html.get("lang") == "ar"
+          assert parser.html.get("dir") == "rtl"
+          assert parser.title_seen
+          print("NexaPay static document contract: OK")
+          PY
