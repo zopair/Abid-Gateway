@@ -7,6 +7,12 @@ on:
       - "render_demo.py"
       - "build_video.sh"
       - ".github/workflows/build-demo-video.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "render_demo.py"
+      - "build_video.sh"
+      - ".github/workflows/build-demo-video.yml"
   workflow_dispatch:
 
 permissions:
