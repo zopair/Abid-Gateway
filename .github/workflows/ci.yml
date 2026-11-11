@@ -1,19 +1,31 @@
-name: CI
+name: NexaPay Static Site CI
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+
 permissions:
   contents: read
+
+concurrency:
+  group: nexapay-ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  test-build:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-python@v5
         with:
-          node-version: 20
-      - run: npm install
-      - run: npm test
-      - run: npm run build
+          python-version: "3.11"
+      - name: Validate static prototype and local assets
+        run: python scripts/validate_site.py
+      - name: Run regression tests
+        run: python -m unittest discover -s tests -v
+      - name: Validate Python demo and shell scripts
+        run: |
+          python -m py_compile render_demo.py scripts/validate_site.py
+          bash -n build_video.sh scripts/generate-hashes.sh scripts/sign-commits.sh scripts/verify-evidence.sh
