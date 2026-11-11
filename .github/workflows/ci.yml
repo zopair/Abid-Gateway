@@ -1,19 +1,66 @@
-name: CI
+name: Static Site CI
 on:
   push:
-    branches: [main]
+    branches: [main, fix/least-privilege-demo-build]
   pull_request:
     branches: [main]
 permissions:
   contents: read
 jobs:
-  test-build:
+  validate-static-site:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm install
-      - run: npm test
-      - run: npm run build
+      - name: Validate standalone HTML and local assets
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          root = Path(".").resolve()
+          page = root / "index.html"
+          if not page.is_file():
+              raise SystemExit("Missing root index.html")
+
+          class Audit(HTMLParser):
+              def __init__(self):
+                  super().__init__(convert_charrefs=True)
+                  self.tags, self.ids, self.refs = [], set(), []
+              def handle_starttag(self, tag, attrs):
+                  self.tags.append(tag.lower())
+                  attrs = dict(attrs)
+                  if attrs.get("id"):
+                      self.ids.add(attrs["id"])
+                  for key in ("src", "href"):
+                      if attrs.get(key, "").strip():
+                          self.refs.append((key, attrs[key].strip()))
+
+          parser = Audit()
+          parser.feed(page.read_text(encoding="utf-8"))
+          parser.close()
+          errors = []
+          for key, value in parser.refs:
+              parsed = urlparse(value)
+              if parsed.scheme or value.startswith(("//", "data:", "mailto:", "tel:", "javascript:")):
+                  continue
+              if value.startswith("#"):
+                  if value[1:] and value[1:] not in parser.ids:
+                      errors.append(f"missing anchor: {value}")
+                  continue
+              target = (root / parsed.path.lstrip("/")).resolve()
+              if root not in target.parents and target != root:
+                  errors.append(f"path escapes repository: {value}")
+              elif parsed.path and not target.exists():
+                  errors.append(f"missing local asset: {value}")
+          if not all(tag in parser.tags for tag in ("html", "head", "body")):
+              errors.append("document must contain html, head and body")
+          if errors:
+              print("\\n".join(errors))
+              raise SystemExit(1)
+          print(f"Static site validation passed: {len(parser.tags)} elements and {len(parser.refs)} references checked.")
+          PY
+      - name: Verify GitHub Pages build input
+        run: |
+          test -s index.html
+          test -s README.md
